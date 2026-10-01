@@ -3,105 +3,197 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Checkout — LearnHub</title>
+  <title>LearnHub — Học Marketing Online</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<header class="nav">
-  <a class="logo" href="index.html">Learn<span>Hub</span></a>
-  <a href="index.html">← Quay lại</a>
-</header>
+  <header class="nav">
+    <a class="logo" href="index.html">Learn<span>Hub</span></a>
 
-<main class="checkout-page">
-  <div class="checkout-card">
-    <span class="eyebrow">CHECKOUT</span>
+    <nav>
+      <a href="#courses">Khóa học</a>
+      <a href="#about">Về chúng tôi</a>
+    </nav>
 
-    <h1>Đăng ký khóa học</h1>
+    <a class="btn btn-small" href="#courses">Xem khóa học</a>
+  </header>
 
-    <p class="muted">
-      Đây là checkout giả lập để luyện tracking. Không có giao dịch thật.
-    </p>
+  <main>
 
-    <form id="checkoutForm">
+    <section class="hero">
+      <div>
+        <span class="eyebrow">ONLINE LEARNING PLATFORM</span>
 
-      <label>
-        Họ và tên
-        <input
-          id="name"
-          type="text"
-          placeholder="Nguyễn Văn A"
-          required
-        >
-      </label>
+        <h1>
+          Học marketing theo cách <span>thực chiến.</span>
+        </h1>
 
-      <label>
-        Email
-        <input
-          id="email"
-          type="email"
-          placeholder="example@email.com"
-          required
-        >
-      </label>
+        <p>
+          Khóa học ngắn gọn, dễ hiểu và tập trung vào những kỹ năng bạn có thể áp dụng ngay.
+        </p>
 
-      <label>
-        Số điện thoại
-        <input
-          id="phone"
-          type="tel"
-          placeholder="0901234567"
-          required
-        >
-      </label>
-
-      <label>
-        Khóa học
-
-        <select id="courseSelect">
-
-          <option
-            value="performance-101"
-            data-price="699000"
-          >
-            Performance Marketing 101 — 699.000đ
-          </option>
-
-          <option
-            value="marketing-101"
-            data-price="499000"
-          >
-            Marketing Fundamentals — 499.000đ
-          </option>
-
-          <option
-            value="analytics-101"
-            data-price="599000"
-          >
-            Marketing Analytics 101 — 599.000đ
-          </option>
-
-        </select>
-      </label>
-
-      <div class="order-total">
-        <span>Tổng cộng</span>
-        <strong id="total">699.000đ</strong>
+        <a class="btn" href="#courses">Khám phá khóa học</a>
       </div>
 
-      <button
-        class="btn full"
-        type="submit"
-      >
-        Hoàn tất đăng ký
-      </button>
+      <div class="hero-card">
+        <div class="play">▶</div>
+        <p>Marketing Fundamentals</p>
+        <strong>Học từ nền tảng đến thực hành</strong>
+      </div>
+    </section>
 
-    </form>
-  </div>
-</main>
+    <section id="courses" class="section">
 
-<script src="script.js"></script>
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">FEATURED COURSES</span>
+          <h2>Khóa học nổi bật</h2>
+        </div>
+
+        <span class="muted">3 khóa học</span>
+      </div>
+
+      <div class="grid">
+
+        <article
+          class="course-card"
+          data-course-id="marketing-101"
+          data-course-name="Marketing Fundamentals"
+          data-price="499000"
+        >
+          <div class="course-image blue">
+            MARKETING<br>101
+          </div>
+
+          <div class="course-body">
+            <span class="tag">Beginner</span>
+
+            <h3>Marketing Fundamentals</h3>
+
+            <p>
+              Hiểu customer, STP, marketing funnel và cách một campaign vận hành.
+            </p>
+
+            <div class="course-bottom">
+              <strong>499.000đ</strong>
+
+              <a
+                class="btn btn-small"
+                href="course.html?course=marketing-101"
+              >
+                Xem khóa học
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article
+          class="course-card"
+          data-course-id="performance-101"
+          data-course-name="Performance Marketing 101"
+          data-price="699000"
+        >
+          <div class="course-image yellow">
+            PERFORMANCE<br>MARKETING
+          </div>
+
+          <div class="course-body">
+            <span class="tag">Popular</span>
+
+            <h3>Performance Marketing 101</h3>
+
+            <p>
+              Học cách đọc CPM, CTR, CPC, CVR, ROAS và tư duy tối ưu campaign.
+            </p>
+
+            <div class="course-bottom">
+              <strong>699.000đ</strong>
+
+              <a
+                class="btn btn-small"
+                href="course.html?course=performance-101"
+              >
+                Xem khóa học
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article
+          class="course-card"
+          data-course-id="analytics-101"
+          data-course-name="Marketing Analytics 101"
+          data-price="599000"
+        >
+          <div class="course-image green">
+            MARKETING<br>ANALYTICS
+          </div>
+
+          <div class="course-body">
+            <span class="tag">Intermediate</span>
+
+            <h3>Marketing Analytics 101</h3>
+
+            <p>
+              Biến dữ liệu campaign thành insight và quyết định marketing.
+            </p>
+
+            <div class="course-bottom">
+              <strong>599.000đ</strong>
+
+              <a
+                class="btn btn-small"
+                href="course.html?course=analytics-101"
+              >
+                Xem khóa học
+              </a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section id="about" class="section light">
+
+      <span class="eyebrow">WHY LEARNHUB?</span>
+
+      <h2>Học để làm được.</h2>
+
+      <div class="features">
+
+        <div>
+          <b>01</b>
+          <h3>Practical</h3>
+          <p>
+            Ví dụ và bài tập mô phỏng tình huống thật.
+          </p>
+        </div>
+
+        <div>
+          <b>02</b>
+          <h3>Simple</h3>
+          <p>
+            Giải thích khái niệm phức tạp bằng ngôn ngữ dễ hiểu.
+          </p>
+        </div>
+
+        <div>
+          <b>03</b>
+          <h3>Flexible</h3>
+          <p>
+            Học online theo tốc độ của riêng bạn.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
 
 </body>
 </html>
