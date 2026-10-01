@@ -1,6 +1,6 @@
 const META_PIXEL_ID = "1095959689843566";
 
-// Khởi tạo Meta Pixel
+// Khởi tạo Meta Pixel Base Code
 !function(f,b,e,v,n,t,s){
   if(f.fbq)return;
   n=f.fbq=function(){
@@ -19,11 +19,12 @@ const META_PIXEL_ID = "1095959689843566";
 }(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");
 
 fbq("init", META_PIXEL_ID);
+// Tự động gửi PageView cho bất kỳ trang nào nhúng script.js
 fbq("track", "PageView");
 
-// Hàm chuẩn hóa để gửi dữ liệu về Meta
+// Hàm chuẩn hóa gửi sự kiện về Facebook
 function track(eventName, params = {}) {
-  console.log("[META] Đang gửi sự kiện:", eventName, params);
+  console.log("[META]", eventName, params);
   if (typeof fbq === "function") {
     fbq("track", eventName, params);
   }
@@ -46,7 +47,7 @@ if (location.pathname.endsWith("course.html")) {
   if (title) title.textContent = data[0];
   if (price) price.textContent = data[1].toLocaleString("vi-VN") + "đ";
 
-  // Bắn sự kiện ViewContent (Xem trang sản phẩm)
+  // Bắn sự kiện ViewContent khi xem chi tiết khóa học
   track("ViewContent", {
     content_name: data[0],
     content_ids: [course],
@@ -62,7 +63,7 @@ if (location.pathname.endsWith("course.html")) {
       localStorage.setItem("selectedCourse", course);
       localStorage.setItem("selectedPrice", data[1]);
 
-      // Bắn sự kiện AddToCart tự động nhận diện đúng tên/giá khóa học
+      // Bắn sự kiện AddToCart
       track("AddToCart", {
         content_name: data[0],
         content_ids: [course],
@@ -81,6 +82,12 @@ if (location.pathname.endsWith("checkout.html")) {
   const select = document.getElementById("courseSelect");
 
   if (select) {
+    // Tự chọn khóa học nếu khách đã chọn từ trang course trước đó
+    const preSelected = localStorage.getItem("selectedCourse");
+    if (preSelected && select.querySelector(`option[value="${preSelected}"]`)) {
+      select.value = preSelected;
+    }
+
     const updateTotal = () => {
       const price = Number(select.selectedOptions[0].dataset.price);
       const total = document.getElementById("total");
@@ -92,7 +99,9 @@ if (location.pathname.endsWith("checkout.html")) {
     updateTotal();
     select.addEventListener("change", updateTotal);
 
+    // Bắn sự kiện InitiateCheckout khi vào trang thanh toán
     track("InitiateCheckout", {
+      content_ids: [select.value],
       content_type: "product",
       value: Number(select.selectedOptions[0].dataset.price),
       currency: "VND"
@@ -108,6 +117,7 @@ if (location.pathname.endsWith("checkout.html")) {
         const price = Number(option.dataset.price);
         const course = option.value;
 
+        // Bắn sự kiện Purchase khi hoàn tất đăng ký
         track("Purchase", {
           content_ids: [course],
           content_type: "product",
@@ -123,7 +133,7 @@ if (location.pathname.endsWith("checkout.html")) {
 
         setTimeout(() => {
           window.location.href = "success.html";
-        }, 1000);
+        }, 800);
       });
     }
   }
